@@ -44,3 +44,17 @@ def voting_system(svc_array, knn_array, dt_array, rf_array):
         voting_array.append(Counter(x).most_common(1)[0][0])
 
     return voting_array
+
+
+def voting_system_2(svc_array, knn_array, dt_array, rf_array):
+    # At first we just have each of them have equal weighting.
+    # Eventually I think giving the better classes some extra pull.
+    # Something like SVC = 2 KNN = 2 dt = 1? or giving each a % of confidence?
+    # instead of saying we are 100% sure on each it is like we are KNN is 60% sure
+    # SVM is 35% sure and DT is 50% sure then we multiply those values by their weights
+    # and choose the option that is highest?
+    voting_array = []
+    for x in zip(svc_array, knn_array, dt_array, rf_array, svc_array):
+        voting_array.append(Counter(x).most_common(1)[0][0])
+
+    return voting_array
